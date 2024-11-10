@@ -1,8 +1,8 @@
 {
   "$schema" : "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
-  "name" : "Template connector",
-  "id" : "io.camunda.connector.Template.v1",
-  "description" : "Describe this connector",
+  "name" : "SOAP Connector",
+  "id" : "io.camunda.connector.SOAPConnector.v1",
+  "description" : "Connector to call SOAP services with basic authentication",
   "documentationRef" : "https://docs.camunda.io/docs/components/connectors/out-of-the-box-connectors/available-connectors-overview/",
   "version" : 1,
   "category" : {
@@ -17,8 +17,8 @@
     "id" : "authentication",
     "label" : "Authentication"
   }, {
-    "id" : "compose",
-    "label" : "Compose"
+    "id" : "request",
+    "label" : "SOAP Request"
   }, {
     "id" : "output",
     "label" : "Output mapping"
@@ -30,7 +30,7 @@
     "label" : "Retries"
   } ],
   "properties" : [ {
-    "value" : "io.camunda:template:1",
+    "value" : "io.camunda:soap-connector:1",
     "binding" : {
       "property" : "type",
       "type" : "zeebe:taskDefinition"
@@ -52,9 +52,9 @@
     },
     "type" : "String"
   }, {
-    "id" : "authentication.token",
-    "label" : "Token",
-    "description" : "The token for authentication",
+    "id" : "authentication.password",
+    "label" : "Password",
+    "description" : "The password for authentication",
     "optional" : false,
     "constraints" : {
       "notEmpty" : true
@@ -62,24 +62,55 @@
     "feel" : "optional",
     "group" : "authentication",
     "binding" : {
-      "name" : "authentication.token",
+      "name" : "authentication.password",
       "type" : "zeebe:input"
     },
     "type" : "String"
   }, {
-    "id" : "message",
-    "label" : "Message",
+    "id" : "soapEndpoint",
+    "label" : "SOAP Endpoint",
+    "description" : "The SOAP service endpoint URL",
     "optional" : false,
     "constraints" : {
       "notEmpty" : true
     },
     "feel" : "optional",
-    "group" : "compose",
+    "group" : "request",
     "binding" : {
-      "name" : "message",
+      "name" : "soapEndpoint",
       "type" : "zeebe:input"
     },
-    "type" : "Text"
+    "type" : "String"
+  }, {
+    "id" : "soapAction",
+    "label" : "SOAP Action",
+    "description" : "The SOAP action to invoke",
+    "optional" : false,
+    "constraints" : {
+      "notEmpty" : true
+    },
+    "feel" : "optional",
+    "group" : "request",
+    "binding" : {
+      "name" : "soapAction",
+      "type" : "zeebe:input"
+    },
+    "type" : "String"
+  }, {
+    "id" : "soapBody",
+    "label" : "SOAP Body",
+    "description" : "The SOAP request body",
+    "optional" : false,
+    "constraints" : {
+      "notEmpty" : true
+    },
+    "feel" : "optional",
+    "group" : "request",
+    "binding" : {
+      "name" : "soapBody",
+      "type" : "zeebe:input"
+    },
+    "type" : "String"
   }, {
     "id" : "resultVariable",
     "label" : "Result variable",
