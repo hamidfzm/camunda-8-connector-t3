@@ -1,27 +1,6 @@
-> A Connector template for new C8 outbound connector
->
-> To use this template update the following resources to match the name of your connector:
->
-> * [README](./README.md) (title, description)
-> * [Element Template](./element-templates/template-connector.json)
-> * [POM](./pom.xml) (artifact name, id, description)
-> * [Connector Function](src/main/java/io/camunda/tecnotree/MyConnectorFunction.java) (rename, implement, update `OutboundConnector` annotation)
-> * [Service Provider Interface (SPI)](./src/main/resources/META-INF/services/io.camunda.connector.api.outbound.OutboundConnectorFunction) (rename)
->
-> ...and delete this hint.
-> 
-> Read more about [creating Connectors](https://docs.camunda.io/docs/components/connectors/custom-built-connectors/connector-sdk/#creating-a-custom-connector)
->
-> Check out the [Connectors SDK](https://github.com/camunda/connector-sdk)
+# TT Connector
 
-
-# Connector Template
-
-Camunda Outbound Connector Template
-
-Emulates a simple outbound connector function that takes a message and echoes it back.
-
-The function will throw an exception if your message starts with `fail`. This can be used to test error handling.
+Camunda TT Outbound Connector
 
 ## Build
 
@@ -97,4 +76,4 @@ It is not mandatory to generate the element template for your connector and you 
 However, the generator provides a convenient way to create the template and keep it in sync with the connector input class
 and empowers you to prototype and iterate quickly.
 
-The generated element template can be found in [element-templates/template-connector.json](./element-templates/template-connector.json).
+The generated element template can be found in [element-templates/soap-connector.json](./element-templates/soap-connector.json).
