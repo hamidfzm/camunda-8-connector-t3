@@ -1,10 +1,13 @@
 package io.camunda.tecnotree.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import io.camunda.connector.generator.java.annotation.TemplateProperty;
+import jakarta.validation.constraints.NotNull;
 
 public class MyConnectorRequest {
-    @NotEmpty
+    @Valid
+    @NotNull
     private Authentication authentication;
     @NotEmpty
     @TemplateProperty(group = "request", label = "SOAP Endpoint", description = "The SOAP service endpoint URL")

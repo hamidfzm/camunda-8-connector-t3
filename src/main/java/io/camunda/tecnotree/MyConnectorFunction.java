@@ -2,7 +2,6 @@ package io.camunda.tecnotree;
 
 import io.camunda.connector.api.annotation.OutboundConnector;
 import io.camunda.connector.api.error.ConnectorException;
-import io.camunda.connector.api.error.ConnectorInputException;
 import io.camunda.connector.api.outbound.OutboundConnectorContext;
 import io.camunda.connector.api.outbound.OutboundConnectorFunction;
 import io.camunda.connector.generator.java.annotation.ElementTemplate;
@@ -94,10 +93,6 @@ public class MyConnectorFunction implements OutboundConnectorFunction {
             LOGGER.info("SOAP Response: {}", responseString);
 
             return new MyConnectorResult(responseString);
-
-        } catch (jakarta.validation.UnexpectedTypeException e) {
-            LOGGER.error(
-            throw new ConnectorInputException(e.getMessage(), e);
         } catch (Exception e) {
             LOGGER.error("Error executing SOAP request", e);
             throw new ConnectorException("SOAP_ERROR", "Error executing SOAP request: " + e.getMessage());

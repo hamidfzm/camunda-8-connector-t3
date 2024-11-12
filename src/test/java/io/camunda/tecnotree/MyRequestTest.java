@@ -52,7 +52,7 @@ public class MyRequestTest {
         // when & then
         assertThatThrownBy(() -> context.bindVariables(MyConnectorRequest.class))
                 .isInstanceOf(ConnectorInputException.class)
-                .hasMessageContaining("Authentication must be provided");
+                .hasMessageContaining("authentication: Validation failed");
     }
 
 
